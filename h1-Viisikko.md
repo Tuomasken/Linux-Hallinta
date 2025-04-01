@@ -10,14 +10,40 @@
 - RAM: 8 gb
 
 
+## x) 
+
+### Karvinen 2021, Run Salt command locally (https://terokarvinen.com/2021/salt-run-command-locally/)
+
+- Tässä artikkelissa Karvinen käy läpi Salt tilafunktioiden testaamista paikallisesti.
+- Tärkeimmät tilafunktiot: pkg, file, service, user ja cmd.
+- Huom! Komento "$ sudo salt-call --local sys.state_doc" ohjeita varten.
+
+### Karvinen 2018, Salt Quickstart (https://terokarvinen.com/2018/03/28/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/)
+
+- Tässä artikkelissa Karvinen käy läpi Salt Masterin ja Minionin asentamista ja alkukonfigurointia.
+- Master ja Minion välinen liikenne tapahtuu porttien 4505 ja 4506 kautta, eli Master-koneelle pitää tehdä vastaavat reiät palomuuriin.
+
+### Karvinen 2006, Raportin kijroittaminen (https://terokarvinen.com/2006/06/04/raportin-kirjoittaminen-4/)
+
+- Tässä artikkelissa Karvinen käy läpi, mitä kurssin tehtävien raporttien tulee sisältää. Nämä periaatteet on kuitenkin yleistettävissä muihinkin tietoteknisiin raportteihin.
+- Raportin sisällön tulee olla: toistettavissa, täsmällinen, helppolukuinen sekä sisältää kaikki käytetyt lähteet.
+- Pahoja virheitä raportin kirjoittamisessa ovat plagiointi ja sepittäminen.
+
+### WMWare Inc 2025, Salt Install Guide: Linux (DEB) (https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html)
+
+- Tässä artikkelissa käydään läpi, kuinka asentaa Salt-paketit Debian-pohjaisiin käyttöjärjestelmiin.
+- Lataus tapahtuu julkisen ja yksityisen avainparia käyttäen.
+
 
 ## b)
 
-Latasin julkisen avaimen
+Aluksi loin avainrenkaalle kansion polkuun /etc/apt/keyrings.
+
+Tämän jälkeen latasin Salt Projektin julkisen avaimen, jotta saan luotua siihen yhteyden:
 
 ![image](https://github.com/user-attachments/assets/bec5030d-f17c-43ee-a72f-bb7330a2f957)
 
-Loin Salt-pakettivaraston asennuskonfiguraation
+Loin Salt-pakettivaraston asennuskonfiguraation:
 
 ![image](https://github.com/user-attachments/assets/fa87f372-d7d6-474f-9de0-00e33abe0f30)
 
@@ -60,7 +86,7 @@ Seuraavaksi service-tilan testaamista komennolla:
 
     $ sudo salt-call --local -l info state.single service.running apache2
 
-Tämä komento pyrkii lopputulokseen, jossa apache2-demoni on toiminnassa. Testissäni apache2 oli jo pystyssä, joten lopputulos komnennosta oli seuraavanlainen:
+Tämä komento pyrkii lopputulokseen, jossa apache2-demoni on toiminnassa. Testissäni apache2 oli jo pystyssä, joten lopputulos komennosta oli seuraavanlainen:
 
 ![image](https://github.com/user-attachments/assets/da4295ca-07fe-468a-a0ec-acec769d1d64)
 
@@ -87,10 +113,28 @@ Joka onnistui myös, kuten kuvasta näkyy:
 
 ## d)
 
-Idempotenssi viittaa tilanteeseen, jossa ajettava komento tuottaa saman tuloksen, vaikka se ajettaisiin useita kertoja. 
+Idempotenssi viittaa tilanteeseen, jossa ajettava komento tuottaa saman tuloksen, vaikka se ajettaisiin useita kertoja. Salt-komennoissa ilmoitetaan toivottu lopputulos, ja kun komento ajetaan, salt vertaa nykyistä tilaa tavoitetilaan.
+Jos tavoitetila on jo voimassa, komento ei tee muutoksia.
+
+Esimerkkinä tästä aiemmin käytetty komento 
+
+        $ sudo salt-call --local -l info state.single pkg.installed tree
+
+Kun komento ajettiin ensimmäisen kerran, kyseinen paketti "tree" asennettiin (kuva ylempänä). Nyt kun ajan saman komennon uudelleen, saan lopputuloksen:
+
+![image](https://github.com/user-attachments/assets/992696c4-280c-4953-9029-1d2c993cc13e)
+
+Ja kuten komennon lopputuloksen lisäinformaatiosta käy ilmi, salt-komento tunnista, että kyseinen paketti on jo asennettuna. Ja muutoksia ei tehty, kuten kohdassa "Changes" voi havaita.
 
 
 
+## Lähteet
+
+1. Karvinen, Tero 2025, Palvelinten Hallinta. Viitattu 01.04.2025. https://terokarvinen.com/palvelinten-hallinta/
+2. Karvinen, Tero 2021, Run Salt command locally. Viitattu 01.04.2025. https://terokarvinen.com/2021/salt-run-command-locally/
+3. Karvinen, Tero 2018, Salt Quickstart. Viitattu 01.04.2025. https://terokarvinen.com/2018/03/28/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/
+4. Karvinen, Tero 2006, Raportin Kirjoittaminen. Viitattu 01.04.2025. https://terokarvinen.com/2006/06/04/raportin-kirjoittaminen-4/
+5. WMWare Inc 2025, Salt Install Guide: Linux (DEB). Viitattu 01.04.2025. https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html
 
 
 
