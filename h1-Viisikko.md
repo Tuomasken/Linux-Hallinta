@@ -76,7 +76,7 @@ Komento onnistui, ja lisäinformaatiosta käy ilmi, että muutoksia tapahtui, el
 
 ![image](https://github.com/user-attachments/assets/d0ed1d00-2c5c-44cb-b0c7-62b03b1570e1)
 
-Tarkistetaan vielä lopputulema:
+Tarkistin vielä lopputuleman:
 
 ![image](https://github.com/user-attachments/assets/38d72fc2-c9e8-49e4-bf80-ac367db0f31f)
 
@@ -100,6 +100,7 @@ Ja lopputulema oli seuraavanlainen:
 
 ![image](https://github.com/user-attachments/assets/823ba0f1-8a27-4111-9951-9e309c08f9bc)
 
+Kuten kuvasta voi päätellä, komento onnistui ja tree niminen paketti asennettiin. Lisäinformaatiosta myös selviää, että tree-paketista ei ollut aiempaa versiota asennettuna, sekä asennetun paketin versio.
 
 ### User
 
@@ -107,14 +108,15 @@ Ja viimeiseksi kokeilin uuden käyttäjän luomista komennolla:
 
     $ sudo salt-call --local -l info state.single user.present salttestaaja
 
-Joka onnistui myös, kuten kuvasta näkyy:
+Joka onnistui myös:
 
 ![image](https://github.com/user-attachments/assets/73d30124-bfaf-4dba-9691-e2cc4665dec2)
 
+Lisäinformaatiossa kerrotaan myös mm. mihin ryhmään tämä uusi käyttäjä lisättiin (tässä tapauksessa käyttäjä on vain omassa ryhmässään) ja kotikansion polun. Huomioitavaa on, että käyttäjälle ei ole asetettu salasanaa tämän komennon yhteydessä. Jos haluaa mahdollistaa salasanalla kirjautumisen käyttäjälle, niin salasana täytyy erikseen määrittää.
+
 ## d)
 
-Idempotenssi viittaa tilanteeseen, jossa ajettava komento tuottaa saman tuloksen, vaikka se ajettaisiin useita kertoja. Salt-komennoissa ilmoitetaan toivottu lopputulos, ja kun komento ajetaan, salt vertaa nykyistä tilaa tavoitetilaan.
-Jos tavoitetila on jo voimassa, komento ei tee muutoksia.
+Idempotenssi viittaa tilanteeseen, jossa ajettava komento tuottaa saman tuloksen, vaikka se ajettaisiin useita kertoja. Salt-komennoissa ilmoitetaan toivottu lopputulos, ja kun komento ajetaan, salt vertaa nykyistä tilaa tavoitetilaan. Jos tavoitetila on jo voimassa, komento ei tee muutoksia.
 
 Esimerkkinä tästä aiemmin käytetty komento 
 
@@ -124,7 +126,7 @@ Kun komento ajettiin ensimmäisen kerran, kyseinen paketti "tree" asennettiin (k
 
 ![image](https://github.com/user-attachments/assets/992696c4-280c-4953-9029-1d2c993cc13e)
 
-Ja kuten komennon lopputuloksen lisäinformaatiosta käy ilmi, salt-komento tunnista, että kyseinen paketti on jo asennettuna. Ja muutoksia ei tehty, kuten kohdassa "Changes" voi havaita.
+Ja kuten komennon lopputuloksen lisäinformaatiosta käy ilmi, salt-komento tunnistaa, että kyseinen paketti on jo asennettuna. Ja muutoksia ei tehty, mikä näkyy kohdassa "Changes".
 
 
 
