@@ -144,7 +144,7 @@ Onnistui!
 
 Seuraavaksi testasin Saltin herra-orja hierarkiaa kohdassa c) luoduilla virtuaalikoneilla. Aluksi lähdin asentamaan ohjeiden https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html mukaisesti Salt:n molemmille koneille ja tekemään t001:stä herran ja t002:sta orjan.
 
-Alkaessani tekemään tätä vaihetta huomasin kuitenkin ongelman; Virtualbox:n Guestadditions ei toiminut ssh-yhteyden kautta, joten leikepöydän käyttö ei onnistunut. Tämä teki Salt:n asentamisesta hyvin hankalaa, joten lähdin selvittämään saisiko Guestadditions:n toimimaan. Löysin seuraavanlaiset ohjeet (https://skillslane.com/vagrant-virtualbox-guest-additions-issue-resolution/) ja kokeilin niitä.
+Alkaessani tekemään tätä vaihetta huomasin kuitenkin ongelman; Virtualbox:n Guestadditions ei toiminut ssh-yhteyden kautta, joten leikepöydän käyttö ei onnistunut. Tämä teki Salt:n asentamisesta hieman hankalampaa, joten lähdin selvittämään saisiko Guestadditions:n toimimaan. Löysin seuraavanlaiset ohjeet (https://skillslane.com/vagrant-virtualbox-guest-additions-issue-resolution/) ja kokeilin niitä.
 
 Tämän jälkeen poistin vielä varmuuden vuoksi olemassa olevat virtuaalikoneet vagrant destroy -komennolla ja kokeilin asentaa ne uudelleen vagrant up -komennolla. Tästä seuraava asennus kesti kuitenkin huomattavasti kauemmin kuin aiemmin ja sisälsi valtavasti enemmän vaiheita. Päättelin, että muutos johtui juuri asennetusta Vagrant:n pluginista. Asennus jumiutui jossain vaiheessa, ja odotettuani noin 10 minuuttia keskeytin virtuaalikoneiden luonnin (ctrl-C) ja poistin vagrant destroy -komennolla sen mitä asennuksessa oli jo luotu. 
 
