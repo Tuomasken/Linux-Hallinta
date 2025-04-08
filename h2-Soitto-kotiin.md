@@ -9,8 +9,11 @@
 - Näytönohjain: Inter(R) HD Graphics 620
 - RAM: 8 gb
 
+------------------------------------------------------------------------
 
 ## x) 
+
+------------------------------------------------------------------------
 
 ## a) 
 
@@ -24,6 +27,8 @@ Tämän jälkeen siirryin isäntäkoneeni komentokehotteeseen ja kokeilin onko V
 Tämä komento palauttaa asennetun vagrantin version:
 
 ![image](https://github.com/user-attachments/assets/2ecafdc7-fefa-4cbb-a235-f6751f0a7102)
+
+-----------------------------------------------------------------------
 
 ## b)
 
