@@ -25,6 +25,40 @@ Tämä komento palauttaa asennetun vagrantin version:
 
 ![image](https://github.com/user-attachments/assets/2ecafdc7-fefa-4cbb-a235-f6751f0a7102)
 
+## b)
+
+Tässä osiossa loin Vagrantilla uuden linux-virtuaalikoneen Virtualbox ympäristöön, käyttäen luennolla läpikäytyä komentoa, joka alustaa käytettävän virtuaalikonemallin:
+
+        vagrant init debian/bookworm64
+
+Komennon ajamisessa kesti pieni hetki, mutta mitään indikaattoria edes prosessin alkamisesta ei tullut, joten piti odottaa kärsivällisesti kunnes komento meni läpi. Tässä kesti kuitenkin alle minuutti.
+Lopputulema:
+
+![image](https://github.com/user-attachments/assets/daff2788-641b-4c0e-bfdc-b41b80b85c51)
+
+Kehotteen mukaisesti kokeilin seuraavaksi luoda virtuaalikoneen komennolla:
+
+        vagrant up
+
+Jonka lopputulema näytti tältä:
+
+![image](https://github.com/user-attachments/assets/59a2cf4c-7711-4ada-954c-8799f11342c2)
+![image](https://github.com/user-attachments/assets/c82142d1-46ab-4c4c-a3ca-265d029efac3)
+
+Tulosteessa on paljon mielenkiintoista informaatiota. Siitä selviää, että Vagrant osasi automaattisesti tehdä Virtualbox:n kautta tehdä tämän virtuaalikoneen asennuksen. Lisäksi Vagrant automaattisesti loi uuden avaimen SSH-yhteyttä varten.
+
+Lopuksi vielä tarkastin Virtualbox:sta, että löytyykö uusi VM sieltä:
+
+![image](https://github.com/user-attachments/assets/a424aeb4-2731-4e72-a27e-9fedb6caed07)
+
+---------------------------------------------------------------------------------------
+
+
+
+
+
+
+
 
 
 
