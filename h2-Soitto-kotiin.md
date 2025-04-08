@@ -158,7 +158,45 @@ Jonka jälkeen loin apt-repositorion määritystiedoston:
 
 	$ curl -fsSL https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources | 		sudo tee /etc/apt/sources.list.d/salt.sources
 
- 
+Tämän jälkeen päivitin metadatan ja asensin salt-masterin sekä otin sen käyttöön:
+
+	$ sudo apt update
+ 	$ sudo apt-get install salt-master
+  	$ sudo systemctl enable salt-master
+   	$ sudo systemctl start salt-master
+
+t001-virtuaalikoneen IP määritettiin Vagrantfile-tiedostossa, mutta tarkistin sen kuitenkin vielä komennolla:
+
+	$ hostname -I
+
+![image](https://github.com/user-attachments/assets/b0791ec9-c6e3-404f-9add-ae648348bda2)
+
+Koska master-koneella ei ole palomuuria asennettuna, niin minun ei tarvinnut tehdä siihen reikiä salliakseni herra-orja liikenteen.
+
+Seuraavaksi otin yhteyttä t002-virtuaalikoneeseen ja kävin siinä samat askeleet läpi kuin t001 kohdalla, paitsi salt-master sijaan asensin salt-minion.
+
+Tämän jälkeen kävin määrittämässä orja-koneella mikä on sen herra, käyttäen komentoa:
+
+	$ sudoedit /etc/salt/minion
+
+Jossa lisäsin seuraavat kohdat:
+
+![image](https://github.com/user-attachments/assets/9fef20a9-66ea-4ef7-a127-dc932693128f)
+
+Ja käynnistin salt-minion demonin uudelleen, jotta muutokset tulevat voimaan:
+
+	$ sudo systemctl restart salt-minion.service
+
+Seuraavaksi siirryin takaisin herra-virtuaalikoneelle t001 hyväksymään herra-orja yhteyden t002 kanssa, käyttäen komentoa:
+
+	$ sudo salt-key -A
+
+![image](https://github.com/user-attachments/assets/b02ccf51-2927-489d-a4ac-b92c0e539bf5)
+
+
+
+
+
 
 
 
