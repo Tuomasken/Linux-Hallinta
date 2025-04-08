@@ -56,7 +56,87 @@ Lopuksi vielä tarkastin Virtualbox:sta, että löytyykö uusi VM sieltä:
 
 ![image](https://github.com/user-attachments/assets/a424aeb4-2731-4e72-a27e-9fedb6caed07)
 
+Myös SSH-yhteys isäntäkoneelta onnistui:
+
+![image](https://github.com/user-attachments/assets/5b74fd6e-5684-4020-ad1d-8672bc9c14e5)
+
+
 ---------------------------------------------------------------------------------------
+
+## c) 
+
+Seuraavaksi lähdin luomaan useamman virtuaalikoneen verkkoa Vagrantilla, käyttäen ohjeita osoitteesta https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/ .
+
+Aloitin luomalla tehtävälle oman kansion ja siirtymällä sinne komennoilla:
+
+        mkdir twohost
+        cd twohost
+
+Ja kohdekansiossa loin vagrantfile-tiedoston ja avasin sen notepadilla käyttäen komentoja:
+
+        vagrant init debian/bookworm64
+        notepad Vagrantfile
+
+Kopioin sinne osoitteesta https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/ config-tiedoston sisällön, muuttaen kuitenkin käytettävän boxin bullseye64 -> bookworm64.
+
+        # -*- mode: ruby -*-
+    # vi: set ft=ruby :
+    # Copyright 2019-2021 Tero Karvinen http://TeroKarvinen.com
+
+    $tscript = <<TSCRIPT
+    set -o verbose
+    apt-get update
+    apt-get -y install tree
+    echo "Done - set up test environment - https://terokarvinen.com/search/?q=vagrant"
+    TSCRIPT
+
+    Vagrant.configure("2") do |config|
+	config.vm.synced_folder ".", "/vagrant", disabled: true
+	config.vm.synced_folder "shared/", "/home/vagrant/shared", create: true
+	config.vm.provision "shell", inline: $tscript
+	config.vm.box = "debian/bookworm64"
+
+	config.vm.define "t001" do |t001|
+		t001.vm.hostname = "t001"
+		t001.vm.network "private_network", ip: "192.168.88.101"
+	end
+
+	config.vm.define "t002", primary: true do |t002|
+		t002.vm.hostname = "t002"
+		t002.vm.network "private_network", ip: "192.168.88.102"
+	end
+	
+    end
+
+Tallensin muutokset tiedostoon ja ajoin komennon:
+
+        vagrant up
+
+Tämä komento asensi kaksi uutta virtuaalikonetta; t001 ja t002, kuten Vagrantfile-tiedostossa määriteltiin. Lisäksi se asensi kyseisille koneille tree-ohjelman (ja ajoi echo-komennon), mikä oli myös määritelty asennettavaksi kyseisessä tiedostossa:
+
+![image](https://github.com/user-attachments/assets/4dac4d73-1f07-40bc-89ed-419ed6e19d2c)
+
+Seuraavaksi kokeilin ottaa ssh-yhteyden vuorollaan koneisiin (aiemmin käytetty komento vagrant ssh "kohteen nimi") ja pingata niillä toisiaansa:
+
+![image](https://github.com/user-attachments/assets/0c4ad43a-c3df-474a-9afd-d54d04b09b2e)
+![image](https://github.com/user-attachments/assets/1715a459-0c7b-402b-b5ec-d27fe66fdf83)
+
+Onnistui!
+
+-------------------------------------------------------------
+
+## d)
+
+Seuraavaksi testasin Saltin herra-orja hierarkiaa kohdassa c) luoduilla virtuaalikoneilla. Aluksi asensin https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html ohjeiden mukaisesti Salt:n 
+molemmille koneille ja tein t001:stä herran ja t002:sta orjan.
+
+Alkaessani tekemään tätä vaihetta huomasin kuitenkin ongelman; Virtualbox:n Guestadditions ei toiminut ssh-yhteyden kautta, joten leikepöydän käyttö ei onnistunut. Tämä teki Salt:n asentamisesta hyvin hankalaa, joten lähdin selvittämään saisiko Guestadditions:n toimimaan. Löysin seuraavanlaiset ohjeet (https://skillslane.com/vagrant-virtualbox-guest-additions-issue-resolution/) ja kokeilin niitä.
+
+
+
+
+
+
 
 
 
