@@ -13,6 +13,21 @@
 
 ## x) 
 
+### Karvinen 2021: Two Machine Virtual Network With Debian 11 Bullseye and Vagrant (https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/)
+
+- Tässä artikkelissa Karvinen käy läpi, miten luoda useamman virtuaalikoneen verkon Vagrantin avulla.
+- Vagrantfile avulla voimme määrittää minkälaisella kokoonpanolla ja alkutoimilla haluamme pystyttää virtuaalikoneet.
+- Kun Vagrantfile on määritelty, komento "vagrant up" luo koneet ja "vagrant destroy" tuhoaa ne.
+
+### Karvinen 2018: Salt Quickstart (https://terokarvinen.com/2018/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/?fromSearch=salt%20quickstart%20salt%20stack%20master%20and%20slave%20on%20ubuntu%20linux)
+
+- Tässä artikkelissa Karvinen käy läpi, kuinka luodaan herra-orja yhteys koneiden välille käyttäen Salt-ohjelmaa.
+- Huom. Salt pitää nykyään asentaa käyttäen ohjeita, jotka saa osoitteesta https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html
+
+### Karvinen 2023: Salt Vagrant - automatically provision one master and two slaves (https://terokarvinen.com/2023/salt-vagrant/#infra-as-code---your-wishes-as-a-text-file)
+
+- Artikkelin kohdissa "infra as code" ja "your wishes as a text file" Karvinen käy läpi miten koota orjilla ajettava koodi tekstitiedostoihin ja niiden käyttö.
+
 ------------------------------------------------------------------------
 
 ## a) 
@@ -127,8 +142,7 @@ Onnistui!
 
 ## d)
 
-Seuraavaksi testasin Saltin herra-orja hierarkiaa kohdassa c) luoduilla virtuaalikoneilla. Aluksi lähdin asentamaan ohjeiden https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html mukaisesti Salt:n 
-molemmille koneille ja tekemään t001:stä herran ja t002:sta orjan.
+Seuraavaksi testasin Saltin herra-orja hierarkiaa kohdassa c) luoduilla virtuaalikoneilla. Aluksi lähdin asentamaan ohjeiden https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html mukaisesti Salt:n molemmille koneille ja tekemään t001:stä herran ja t002:sta orjan.
 
 Alkaessani tekemään tätä vaihetta huomasin kuitenkin ongelman; Virtualbox:n Guestadditions ei toiminut ssh-yhteyden kautta, joten leikepöydän käyttö ei onnistunut. Tämä teki Salt:n asentamisesta hyvin hankalaa, joten lähdin selvittämään saisiko Guestadditions:n toimimaan. Löysin seuraavanlaiset ohjeet (https://skillslane.com/vagrant-virtualbox-guest-additions-issue-resolution/) ja kokeilin niitä.
 
@@ -223,7 +237,14 @@ Seuraavaksi kokeilin luoda uuden käyttäjän orjakoneelle käyttäen komentoa:
 
 ## Lähteet
 
-
+1. Karvinen, Tero 2025, Palvelinten Hallinta. Viitattu 08.04.2025. https://terokarvinen.com/palvelinten-hallinta/
+2. Karvinen, Tero 2021, Two Machine Virtual Network With Debian 11 Bullseye and Vagrant. Viitattu 08.04.2025. https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/
+3. Karvinen 2018: Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux. Viitattu 08.04.2025. https://terokarvinen.com/2018/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/?fromSearch=salt%20quickstart%20salt%20stack%20master%20and%20slave%20on%20ubuntu%20linux
+4. WMWare Inc 2025, Salt Install Guide: Linux (DEB). Viitattu 08.04.2025. https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html
+5. Karvinen 2023, Salt Vagrant - automatically provision one master and two slaves. Viitattu 08.04.2025. https://terokarvinen.com/2023/salt-vagrant/#infra-as-code---your-wishes-as-a-text-file
+6. Hashcorp, Install Vagrant. Viitattu 08.04.2025. https://developer.hashicorp.com/vagrant/docs/installation
+7. Skillslane 2023, [Solved] Vagrant VirtualBox Guest Additions Issue Resolution. Viitattu 08.04.2025.  https://skillslane.com/vagrant-virtualbox-guest-additions-issue-resolution/
+8. https://github.com/dotless-de/vagrant-vbguest/issues/333
 
 
 
