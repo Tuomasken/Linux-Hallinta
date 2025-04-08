@@ -193,7 +193,35 @@ Seuraavaksi siirryin takaisin herra-virtuaalikoneelle t001 hyväksymään herra-
 
 ![image](https://github.com/user-attachments/assets/b02ccf51-2927-489d-a4ac-b92c0e539bf5)
 
+Ja testasin yhteyttä komennolla:
 
+	$ sudo salt 't002' cmd.run 'whoami'
+ 
+![image](https://github.com/user-attachments/assets/27790397-10a5-43a9-95c3-b47722c6aff4)
+
+Orja t002 vastasi, joten yhteys toimii.
+
+----------------------------------------------------
+
+## e)
+
+Kokeilin aluksi file-tilan käyttöä komennolla:
+
+	$ sudo salt -l info 't002' state.single file.managed /tmp/salttesti contents="testi 08.04.2025"
+
+![image](https://github.com/user-attachments/assets/23774fd5-3945-4941-b335-655a1ff19c19)
+
+Seuraavaksi kokeilin luoda uuden käyttäjän orjakoneelle käyttäen komentoa:
+
+	$ sudo salt -l info 't002' state.single user.present salttestaaja
+
+ 
+![image](https://github.com/user-attachments/assets/404b833e-72cd-48ae-87e7-b7943f1e57c8)
+
+
+----------------------------------------------------------
+
+## Lähteet
 
 
 
