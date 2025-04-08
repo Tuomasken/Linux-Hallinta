@@ -127,11 +127,38 @@ Onnistui!
 
 ## d)
 
-Seuraavaksi testasin Saltin herra-orja hierarkiaa kohdassa c) luoduilla virtuaalikoneilla. Aluksi asensin https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html ohjeiden mukaisesti Salt:n 
-molemmille koneille ja tein t001:stä herran ja t002:sta orjan.
+Seuraavaksi testasin Saltin herra-orja hierarkiaa kohdassa c) luoduilla virtuaalikoneilla. Aluksi lähdin asentamaan ohjeiden https://docs.saltproject.io/salt/install-guide/en/latest/topics/install-by-operating-system/linux-deb.html mukaisesti Salt:n 
+molemmille koneille ja tekemään t001:stä herran ja t002:sta orjan.
 
 Alkaessani tekemään tätä vaihetta huomasin kuitenkin ongelman; Virtualbox:n Guestadditions ei toiminut ssh-yhteyden kautta, joten leikepöydän käyttö ei onnistunut. Tämä teki Salt:n asentamisesta hyvin hankalaa, joten lähdin selvittämään saisiko Guestadditions:n toimimaan. Löysin seuraavanlaiset ohjeet (https://skillslane.com/vagrant-virtualbox-guest-additions-issue-resolution/) ja kokeilin niitä.
 
+Tämän jälkeen poistin vielä varmuuden vuoksi olemassa olevat virtuaalikoneet vagrant destroy -komennolla ja kokeilin asentaa ne uudelleen vagrant up -komennolla. Tästä seuraava asennus kesti kuitenkin huomattavasti kauemmin kuin aiemmin ja sisälsi valtavasti enemmän vaiheita. Päättelin, että muutos johtui juuri asennetusta Vagrant:n pluginista. Asennus jumiutui jossain vaiheessa, ja odotettuani noin 10 minuuttia keskeytin virtuaalikoneiden luonnin (ctrl-C) ja poistin vagrant destroy -komennolla sen mitä asennuksessa oli jo luotu. 
+
+Selvitin asiaa netistä, ja löysin potentiaalisen ratkaisun sivulta https://github.com/dotless-de/vagrant-vbguest/issues/333 . Kävin lisäämässä Vagrantfile-tiedostoon kohdan
+
+	if Vagrant.has_plugin?("vagrant-vbguest")
+   	config.vbguest.auto_update = false
+	end
+
+Ajoin uudelleen Vagrant up -komennon, ja tällä kertaa asennus onnistui ja oli nopeampi (noin 1-2 minuuttia). Otin ssh-yhteyden t001-virtuaalikoneeseen ja testasin leikepöydän toimivuutta. Ei toiminut. Totesin hetken harkittuani, että nopeampi vaan kirjoittaa käsin. Eli siirryin takaisin tehtävän tekoon.
+
+Otin SSH-yhteyden t001-virtuaalikoneeseen ja aluksi asensin curl-toiminnon:
+
+	$ sudo apt-get install curl
+ 
+Seuraavaksi loin avainrenkaille kansion:
+
+	$ mkdir -p /etc/apt/keyrings
+
+Ja latasin Salt:n julkisen avaimen:
+
+	$ curl -fsSL https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public | 		sudo tee /etc/apt/keyrings/salt-archive-keyring.pgp
+
+Jonka jälkeen loin apt-repositorion määritystiedoston:
+
+	$ curl -fsSL https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources | 		sudo tee /etc/apt/sources.list.d/salt.sources
+
+ 
 
 
 
