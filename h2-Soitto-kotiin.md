@@ -27,3 +27,5 @@ Tämä komento palauttaa asennetun vagrantin version:
 
 
 
+
+
