@@ -11,3 +11,19 @@
 
 
 ## x) 
+
+## a) 
+
+Aluksi lähdin asentamaan Vagrant-ohjelmaa isäntäkoneelle käyttäen Vagrantin omia ohjeita (https://developer.hashicorp.com/vagrant/docs/installation).
+Latasin Vagrantista version AMD64 2.4.3 (https://developer.hashicorp.com/vagrant/install) ja ajoin asennusohjelman, joka toimi ongelmitta.
+
+Tämän jälkeen siirryin isäntäkoneeni komentokehotteeseen ja kokeilin onko Vagrant asennettu komennolla:
+
+    vagrant -v
+
+Tämä komento palauttaa asennetun vagrantin version:
+
+![image](https://github.com/user-attachments/assets/2ecafdc7-fefa-4cbb-a235-f6751f0a7102)
+
+
+
