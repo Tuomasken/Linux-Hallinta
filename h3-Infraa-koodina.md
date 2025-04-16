@@ -12,6 +12,22 @@
 
 ## x) 
 
+### Karvinen 2014: Hello Salt Infra-as-Code (https://terokarvinen.com/2024/hello-salt-infra-as-code/)
+
+- Tässä artikkelissa Karvinen käy läpi miten tehdä sls-tiedostoja, joiden avulla hallita orja-koneita.
+- Sls-tiedosto sisältää Salt:n omasta kielestä koostuvaa syntaksia, joilla voidaan ajaa monimutkaisempia komentokokonaisuuksia.
+
+### Salt contributors: Salt overview (https://docs.saltproject.io/salt/user-guide/en/latest/topics/overview.html#rules-of-yaml)
+
+- Tämä Salt Project:n käyttöoppaan kohdat YAML:sta käsittelevät Salt:n omaa tapaa kirjoittaa sen konfiguraatiotiedostot, ja sen rakennetta.
+- YAML koostuu kolmesta eri perustyypistä; Skalaarinen, listamainen ja sanakirjamainen.
+
+--------------------------------------------------------------------------
+
+## a)
+
+
+
 
 
 ## Lähteet
