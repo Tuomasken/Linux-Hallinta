@@ -1,4 +1,4 @@
-# H2 Infraa koodina
+# H3 Infraa koodina
 
 ## Harjoituksessa käytetyn koneen parametrejä
 
@@ -96,6 +96,16 @@ Kuten kuvasta näkyy, niin sen tila vaihtui aktiiviseksi. Seuraavaksi kokeilin a
 ------------------------------------------------------------------
 
 ## c)
+
+Tässä osiossa lähdin testaamaan useampaa tilafunktiota käyttävää sls-tiedostoa. Samoin kuin aiemmin, loin uuden moduulin esim2, siirryin sinne ja loin tiedoston init.sls.
+
+        $ sudo mkdir -p /srv/salt/esim2/
+        $ cd /srv/salt/esim2/
+        $ sudoedit init.sls
+
+Koska aiemmassa esimerkissä kokeilin jo file-tilaa, niin nyt ajattelin testata pkg- ja user-tiloja. Tutustuin Saltin käyttöoppaaseen (https://docs.saltproject.io/salt/user-guide/en/latest/topics/states.html) ja irjoitin seuraavanlaisen syntaksin 
+
+        
 
 
 
