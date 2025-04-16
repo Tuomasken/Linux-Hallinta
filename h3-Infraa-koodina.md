@@ -144,4 +144,7 @@ Ajaessa moduulin uudelleen komennot toimivat, mutta eivät tee mitään koska ni
 
 ## Lähteet
 
-1. Karvinen, Tero 2025, Palvelinten Hallinta. Viitattu 08.04.2025. https://terokarvinen.com/palvelinten-hallinta/
+1. Karvinen, Tero 2025, Palvelinten Hallinta. Viitattu 16.04.2025. https://terokarvinen.com/palvelinten-hallinta/
+2. Karvinen 2014: Hello Salt Infra-as-Code. Viitattu 16.04.2025. https://terokarvinen.com/2024/hello-salt-infra-as-code/
+3. Salt Project: Salt overview. Viitattu 16.04.2025. https://docs.saltproject.io/salt/user-guide/en/latest/topics/overview.html#rules-of-yaml
+4. Salt Project: Salt states. Viitattu 16.04.2025. https://docs.saltproject.io/salt/user-guide/en/latest/topics/states.html
