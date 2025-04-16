@@ -103,13 +103,43 @@ Tässä osiossa lähdin testaamaan useampaa tilafunktiota käyttävää sls-tied
         $ cd /srv/salt/esim2/
         $ sudoedit init.sls
 
-Koska aiemmassa esimerkissä kokeilin jo file-tilaa, niin nyt ajattelin testata pkg- ja user-tiloja. Tutustuin Saltin käyttöoppaaseen (https://docs.saltproject.io/salt/user-guide/en/latest/topics/states.html) ja irjoitin seuraavanlaisen syntaksin 
+Koska aiemmassa esimerkissä kokeilin jo file-tilaa, niin nyt ajattelin testata pkg- ja user-tiloja. Tutustuin Saltin käyttöoppaaseen (https://docs.saltproject.io/salt/user-guide/en/latest/topics/states.html) ja kirjoitin seuraavanlaisen syntaksin.
 
-        
+       install_tree:
+         pkg.installed:
+           - name: tree
 
+        make_user_testaaja2:
+          user.present:
+            - name: testaaja2
 
+Kokeilin ajaa moduulin t002-orjalla käyttäen komentoa:
 
+        $ sudo salt -l info 't002' state.apply esim2
 
+Onnistui!
+
+![image](https://github.com/user-attachments/assets/83252257-2de4-4187-9aa7-7beb874f5d63)
+
+Tree ei asentunut, koska olin unohtanut että se oli tullut asennettua orjakoneelle jo aiemmassa harjoituksessa. Mutta tulos kuitenkin osoittaa, että syntaksi kuitenkin toimi (ja samalla tuli osoitettua komennon idempotenttisuus, sillä tree-ohjelmaa ei asennettu uudelleen).
+
+Seuraavaksi varmistin, että komennot olivat toimineet. Ensiksi käyttäjän testaaja2 tarkastelu:
+
+        $ sudo salt -l info 't002' state.single cmd.run 'id testaaja2'
+
+![image](https://github.com/user-attachments/assets/ccfda2c4-6040-42e8-9085-1ed54a7cf9a7)
+
+Kyseinen käyttäjä löytyi, eli esim2-moduuli oli ainakin siltä osin toiminut. Seuraavaksi katson onko tree asennettuna:
+
+        $ sudo salt -l info 't002' state.single pkg.installed tree
+
+![image](https://github.com/user-attachments/assets/53c9d423-2b5d-4f4b-8e30-46f434c3cd48)
+
+Paketti on asennettuna. Seuraavaksi kokeilen esim2-moduulin idempotenttisuutta suorittamalla sen uudelleen.
+
+![image](https://github.com/user-attachments/assets/29a74e2b-209f-472a-9892-ad4a46f3f0a8)
+
+Ajaessa moduulin uudelleen komennot toimivat, mutta eivät tee mitään koska niiden tavoitetila on jo toteutettuna. Eli esim2 on idempotenttinen.
 
 
 ## Lähteet
