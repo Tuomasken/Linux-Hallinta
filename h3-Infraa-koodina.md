@@ -26,6 +26,26 @@
 
 ## a)
 
+Tässä tehtävässä lähdin harjoittelemaan tietokoneiden hallintaa Saltilla käyttäen sls-tiedostoja. Ensiksi kuitenkin vain paikallisesti. Seurasin sivun https://terokarvinen.com/2024/hello-salt-infra-as-code/ ohjeita.
+
+Aluksi loin uuden testimoduulin polkuun /srv/salt/esim1/ ja siirryin sinne.
+
+    $ sudo mkdir -p /srv/salt/esim1/
+    $ cd /srv/salt/esim1/
+
+Ja lähdin luomaan sls-tiedostoa komennolla
+
+    $ sudoedit init.sls
+
+Ja kirjoitin sinne syntaksin, joka luo uuden tiedoston käyttäen Saltin file-tilaa:
+
+    /tmp/esimerkki1:
+      file.managed
+
+
+
+
+
 
 
 
