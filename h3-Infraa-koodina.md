@@ -141,6 +141,7 @@ Paketti on asennettuna. Seuraavaksi kokeilen esim2-moduulin idempotenttisuutta s
 
 Ajaessa moduulin uudelleen komennot toimivat, mutta eivät tee mitään koska niiden tavoitetila on jo toteutettuna. Eli esim2 on idempotenttinen.
 
+---------------------------------------------------------------------------------------
 
 ## Lähteet
 
