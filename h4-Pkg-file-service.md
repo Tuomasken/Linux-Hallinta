@@ -12,6 +12,12 @@
 
 ## x) 
 
+Karvinen 2018: Pkg-File-Service – Control Daemons with Salt – Change SSH Server Port (https://terokarvinen.com/2018/04/03/pkg-file-service-control-daemons-with-salt-change-ssh-server-port/?fromSearch=karvinen%20salt%20ssh)
+
+- Konfiguraatioita hallitsemalla voi ylläpitää useita demoneita.
+- Package-file-service on normaali tilafunktion rakenne tälle. Package asentaa ohjelman, file määrittää konfiguraatiotiedoston sisällön ja service käynnistää ja valvoo demonia.
+- Tässä artikkelissa Karvinen käy asiaa läpi käyttäen esimerkkinä uuden SSH-serverin portin avaamista orjakoneille.
+
 
 ---------------------------------------------------------------------------------------
 
@@ -167,4 +173,9 @@ Tämän viestin perusteella päättelisin, että vaikka yhteyttä ei muodostettu
         
 ## Lähteet
 
-1. Karvinen, Tero 2025, Palvelinten Hallinta. Viitattu 16.04.2025. https://terokarvinen.com/palvelinten-hallinta/
+1. Karvinen 2025, Palvelinten Hallinta. Viitattu 24.04.2025. https://terokarvinen.com/palvelinten-hallinta/
+2. Karvinen 2018, Pkg-File-Service - Control Daemons with Salt. Viitattu 24.04.2025 https://terokarvinen.com/2018/04/03/pkg-file-service-control-daemons-with-salt-change-ssh-server-port/?fromSearch=karvinen%20salt%20ssh
+3. Kenttälä 2025, Kurssiharjoitus H2 Soitto Kotiin. Viitattu 24.04.2025. https://github.com/Tuomasken/Linux-Hallinta/blob/main/h2-Soitto-kotiin.md
+4. Salt Project, Salt.states.file. Viitattu 24.04.2025. https://docs.saltproject.io/en/3006/ref/states/all/salt.states.file.html#salt.states.file.managed
+5. Akamai Cloud 2018, Configure Apache with Salt Stack. Viitattu 24.04.2025. https://www.linode.com/docs/guides/configure-apache-with-salt-stack/
+6. ChatGPT https://chatgpt.com/
