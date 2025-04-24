@@ -97,10 +97,74 @@ Otin SSH-yhteyden herrakoneeseen ja ajoin uudelleen state.apply komennon. Täll�
 
 ![image](https://github.com/user-attachments/assets/02941b22-ffe2-4b89-a9cc-b1912d4f047c)
 
+Testasin vielä, että apache toimii ja testisivu on korvattu komennolla:
 
+        $ sudo salt t002 cmd.run 'curl localhost'
 
+Ja sivu oli korvaantunut sisältämään vain sanan "Testisivu", kuten tästä kuvasta voi nähdä:
 
+![image](https://github.com/user-attachments/assets/7be5f2db-466e-4f13-80c3-a270a82f18cb)
 
+--------------------------------------------------------------------
+
+## b)
+
+Tässä tehtävässä aukaisen portin herran ja orjan välille, jota kautta SSHd kuuntelee.
+
+Aluksi siirryin (https://terokarvinen.com/2018/04/03/pkg-file-service-control-daemons-with-salt-change-ssh-server-port/?fromSearch=karvinen%20salt%20ssh) ohjeiden mukaisesti muokkaamaan /etc/ssg/sshd_config tiedostoa.
+
+        $ sudoedit /etc/ssh/sshd_config
+
+Ja lisäsin kohdat "Port 22" ja "Port 8888" sinne.
+
+![image](https://github.com/user-attachments/assets/6f2b2378-9388-4685-ad8f-b01e9c6ac240)
+
+Koska muutin config-tiedostoa, käynnistin demonin uudelleen:
+
+        $ sudo systemctl restart sshd
+
+Seuraavaksi loin salt-moduulin ja sls-tiedoston sinne
+
+        $ sudo mkdir /srv/salt/sshd
+        $ sudoedit /srv/salt/sshd/init.sls
+
+Sls-tiedoston sisältö:
+
+        openssh-server:
+          pkg.installed
+          
+        /etc/ssh/sshd_config:
+          file.managed:
+            - source: salt://sshd/sshd_config
+        
+        sshd:
+          service.running:
+            - watch:
+              - file: /etc/ssh/sshd_config
+
+Seuraavaksi kopioin sshd_config-tiedoston sshd-moduuliin:
+
+        $ sudo cp /etc/ssh/sshd_config /srv/salt/sshd/sshd_config
+
+Ja ajoin komennon:
+
+        $ sudo salt t002 state.apply sshd
+
+Jonka lopputulos oli onnistunut: 
+
+![image](https://github.com/user-attachments/assets/1b7a9fe4-7b74-4f78-985b-d46ce296cb80)
+
+Tämän jälkeen vielä testasin yhteyttä orjakoneeseen portin 8888 läpi:
+
+        $ ssh -p 8888 vagrant@192.168.88.102
+
+Sain seuraavanlaisen ilmoituksen: 
+
+![image](https://github.com/user-attachments/assets/25ba902a-354d-40b2-8b07-ce45b014119a)
+
+Tämän viestin perusteella päättelisin, että vaikka yhteyttä ei muodostettu, niin portti 8888 on auki ja sshd toimii sen kautta, koska se vaatii julkista avainta. 
+
+        
 ## Lähteet
 
 1. Karvinen, Tero 2025, Palvelinten Hallinta. Viitattu 16.04.2025. https://terokarvinen.com/palvelinten-hallinta/
