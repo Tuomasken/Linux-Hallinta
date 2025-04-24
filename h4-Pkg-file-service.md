@@ -168,14 +168,15 @@ Sain seuraavanlaisen ilmoituksen:
 
 ![image](https://github.com/user-attachments/assets/25ba902a-354d-40b2-8b07-ce45b014119a)
 
-Tämän viestin perusteella päättelisin, että vaikka yhteyttä ei muodostettu, niin portti 8888 on auki ja sshd toimii sen kautta, koska se vaatii julkista avainta. 
+Tämän viestin perusteella päättelisin, että vaikka yhteyttä ei muodostettu, niin portti 8888 on auki ja sshd toimii sen kautta, koska se osaa vaatia julkista avainta. 
 
         
 ## Lähteet
 
 1. Karvinen 2025, Palvelinten Hallinta. Viitattu 24.04.2025. https://terokarvinen.com/palvelinten-hallinta/
-2. Karvinen 2018, Pkg-File-Service - Control Daemons with Salt. Viitattu 24.04.2025 https://terokarvinen.com/2018/04/03/pkg-file-service-control-daemons-with-salt-change-ssh-server-port/?fromSearch=karvinen%20salt%20ssh
-3. Kenttälä 2025, Kurssiharjoitus H2 Soitto Kotiin. Viitattu 24.04.2025. https://github.com/Tuomasken/Linux-Hallinta/blob/main/h2-Soitto-kotiin.md
-4. Salt Project, Salt.states.file. Viitattu 24.04.2025. https://docs.saltproject.io/en/3006/ref/states/all/salt.states.file.html#salt.states.file.managed
-5. Akamai Cloud 2018, Configure Apache with Salt Stack. Viitattu 24.04.2025. https://www.linode.com/docs/guides/configure-apache-with-salt-stack/
-6. ChatGPT https://chatgpt.com/
+2. Karvinen 2018, Name Based Virtual Hosts on Apache. Viitattu 24.04.2025. https://terokarvinen.com/2018/04/10/name-based-virtual-hosts-on-apache-multiple-websites-to-single-ip-address/
+3. Karvinen 2018, Pkg-File-Service - Control Daemons with Salt. Viitattu 24.04.2025 https://terokarvinen.com/2018/04/03/pkg-file-service-control-daemons-with-salt-change-ssh-server-port/?fromSearch=karvinen%20salt%20ssh
+4. Kenttälä 2025, Kurssiharjoitus H2 Soitto Kotiin. Viitattu 24.04.2025. https://github.com/Tuomasken/Linux-Hallinta/blob/main/h2-Soitto-kotiin.md
+5. Salt Project, Salt.states.file. Viitattu 24.04.2025. https://docs.saltproject.io/en/3006/ref/states/all/salt.states.file.html#salt.states.file.managed
+6. Akamai Cloud 2018, Configure Apache with Salt Stack. Viitattu 24.04.2025. https://www.linode.com/docs/guides/configure-apache-with-salt-stack/
+7. ChatGPT https://chatgpt.com/
