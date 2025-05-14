@@ -1,5 +1,6 @@
 # H5 Miniprojekti - Käyttäjienhallintaa Salt:lla
 
+Tämän projektin repository on osoitteessa https://github.com/Tuomasken/Miniprojekti_SaltUM/tree/main 
   
 ## Harjoituksessa käytetyn koneen parametrejä
 
