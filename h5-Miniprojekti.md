@@ -165,6 +165,13 @@ Ja tarkistetaan vielä lopputulema moduulilla check_users, mitä käytettiin aie
 Kaikki toimii kuten pitääkin.
 
 
+## Loppusanat ja pohdintaa
+
+Projekti oli mielenkiintoinen ja opettavainen. Tarkoituksella valitsin lähestyä käyttäjienhallintaa aivan ruohonjuuritasolta lähtien, jotta saisin paremman kuvan sen taustatoiminnoista. Jos olisin valinnut jonkun valmiin ohjelman tähän tarkoitukseen ja harjoitellut sen käyttöä, niin en ehkä olisi hahmottanut aivan kaikkea mihin nyt törmäsi tätä projektia tehdessä. Ja perusasioiden harjoittelu Salt:n parissa oli erittäin tervetullutta!
+
+Projekti oli kuitenkin ilmiselvästi vain pintaraapaisu aiheeseen. Itse jäin kaipaamaan useamman orjakoneen konfigurointia käyttäen useita eri pilareita, ja myös monimutkaisempia pilarirakenteita. Nämä ovatkin varmaan seuraavat asiat mihin tutustun asian ääreltä. 
+
+Kaiken kaikkiaan opettavainen pikkuprojekti.
 
 
 ## Lähteet
