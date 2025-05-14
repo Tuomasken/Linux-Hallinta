@@ -9,6 +9,8 @@
 - Näytönohjain: Inter(R) HD Graphics 620
 - RAM: 8 gb
 
+- Virtuaalikoneet OS: Debian/Bookworm64
+
 ----------------------------------------------------------
 
 ## Alkuvalmistelut
@@ -122,7 +124,7 @@ Sai tulosteeksi orjakoneen senhetkiset käyttäjät:
 
 ![image](https://github.com/user-attachments/assets/17d1d63a-31e8-4677-adef-913ddc27dba3)
 
-Testasin vielä miten komento näyttää "odottamattomat" käyttäjät, eli ne mitkä eivät ole edustettuna users-pilarissa. Tätä testasin ajamalla komennot:
+Testasin vielä miten komento näyttää "odottamattomat" käyttäjät, eli ne mitkä eivät ole edustettuna users-pilarissa. Tätä testasin lisäämällä orjakoneelle tarja-käyttäjän:
 
       $ sudo salt 'orja1' user.add tarja
       $ sudo salt 'orja1' check_users.audit_users
@@ -167,7 +169,7 @@ Kaikki toimii kuten pitääkin.
 ##Lähteet
 
 1. Karvinen, Tero 2025, Palvelinten Hallinta. Viitattu 14.05.2025. https://terokarvinen.com/palvelinten-hallinta/
-2. https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h4-pkg-file-service.md
-3. https://docs.saltproject.io/en/latest/ref/configuration/master.html#pillar-configuration-master
-4. https://docs.saltproject.io/salt/user-guide/en/latest/topics/jinja.html
-5. ChatGPT.com
+2. Giang 2025, H4 Pkg-File-Service. Viitattu 14.05.2025. https://github.com/gianglex/Courses/blob/main/Palvelinten-Hallinta/h4-pkg-file-service.md
+3. Salt Project, 2025. Pillar Configuration. Viitattu 14.05.2025. https://docs.saltproject.io/en/latest/ref/configuration/master.html#pillar-configuration-master
+4. Salt Project, 2025. Using Jinja with Salt. Viitattu 14.05.2025 https://docs.saltproject.io/salt/user-guide/en/latest/topics/jinja.html
+5. ChatGPT-keskustelu. Käyty 14.05.2025. ChatGPT.com
